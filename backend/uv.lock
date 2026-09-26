@@ -1942,6 +1942,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "faiss-cpu" },
     { name = "fastapi" },
+    { name = "httpx" },
     { name = "llama-index" },
     { name = "numpy" },
     { name = "openrouter" },
@@ -1961,6 +1962,7 @@ dev = [
 requires-dist = [
     { name = "faiss-cpu", specifier = ">=1.15.1" },
     { name = "fastapi", specifier = ">=0.141.1" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "llama-index", specifier = ">=0.14.25" },
     { name = "numpy", specifier = ">=2.5.3" },
     { name = "openrouter", specifier = ">=1.2.31" },
