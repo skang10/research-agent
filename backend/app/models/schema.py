@@ -14,4 +14,4 @@ class UploadedFile(BaseModel):
 
 
 class SourcesResponse(BaseModel):
-    uploaded_files: list[UploadedFile]
+    uploaded: list[UploadedFile]

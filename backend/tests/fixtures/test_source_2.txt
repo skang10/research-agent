@@ -1,0 +1,17 @@
+Nordlicht Robotics GmbH — Quarterly Operations Report, Q2 2026
+(Fictional company. All figures are invented test data.)
+
+Summary
+Nordlicht Robotics shipped 1,284 units of its warehouse picking robot, the model KR-7 "Kranich", in Q2 2026, up from 941 units in Q1. Revenue for the quarter was 38.6 million euros. The company's headquarters are in Mannheim, and its main assembly plant is in Ludwigshafen.
+
+Product
+The KR-7 uses a suction-based gripper and a stereo camera system called "Eulenblick". Its average pick rate in customer deployments was 612 items per hour. The previous model, KR-5, averaged 455 items per hour. The KR-7 battery lasts 9.5 hours on a single charge.
+
+Customers
+The largest customer in Q2 was a fictional grocery chain named Frischkorb, which ordered 310 units. The second-largest was the logistics company Blauweg Logistik with 205 units.
+
+Risks
+Supply of the Eulenblick camera sensor was delayed by six weeks in May due to a shortage at the supplier Optivera. Management expects the backlog to clear by the end of Q3 2026.
+
+Outlook
+Nordlicht plans to launch the KR-9 model in Q1 2027. The KR-9 is targeted at a pick rate of 800 items per hour and will add a two-arm configuration.

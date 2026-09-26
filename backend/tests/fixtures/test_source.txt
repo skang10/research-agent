@@ -1,0 +1,24 @@
+# Platform Team Meeting — 12 Sept 2026
+
+*Fictional meeting notes for testing.*
+
+**Attendees:** Mara, Jonas, Priyanka, Felix
+
+## Decisions
+
+1. The team will migrate the job queue from RabbitMQ to Redis Streams. Target completion: 31 October 2026. Owner: Jonas.
+2. The internal API rate limit will be raised from 200 to 500 requests per minute per client.
+3. Code freeze for the winter release begins on 1 December 2026.
+
+## Discussion
+
+Priyanka reported that p95 latency for the search endpoint rose from 180 ms to 420 ms after the August deploy. The suspected cause is a missing database index on the `documents.updated_at` column. Felix will add the index and re-measure by 19 September.
+
+Mara raised concerns that the staging environment has drifted from production. The team agreed to rebuild staging from infrastructure-as-code templates every Monday.
+
+## Action items
+
+- Jonas: write a migration plan for Redis Streams (due 20 Sept)
+- Felix: add index on `documents.updated_at` (due 19 Sept)
+- Priyanka: set up a latency alert at 300 ms p95 (due 16 Sept)
+- Mara: document the staging rebuild process (due 26 Sept)
