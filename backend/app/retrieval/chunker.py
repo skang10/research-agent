@@ -13,6 +13,9 @@ class VanillaChunker(Chunker):
         self.chunk_size = chunk_size
 
     def chunk(self, content: str) -> list[str]:
+        # 1. split into sentences using regex
+        # 2. group sentences into chunks if size <= chunk_size
+
         sentences = re.split(r"(?<=[.!?])\s+", content.strip())
         chunks = []
         current_chunk = ""
