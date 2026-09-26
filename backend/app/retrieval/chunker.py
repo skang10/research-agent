@@ -1,6 +1,8 @@
 import re
 from abc import ABC, abstractmethod
 
+from app.config import config
+
 
 class Chunker(ABC):
     @abstractmethod
@@ -9,8 +11,11 @@ class Chunker(ABC):
 
 
 class VanillaChunker(Chunker):
-    def __init__(self, chunk_size: int = 1024):
-        self.chunk_size = chunk_size
+    def __init__(self, chunk_size: int = None):
+        if chunk_size is not None:
+            self.chunk_size = chunk_size
+        else:
+            self.chunk_size = config.retrieval.chunk_size
 
     def chunk(self, content: str) -> list[str]:
         # 1. split into sentences using regex
