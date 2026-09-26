@@ -11,13 +11,16 @@ class FaissVectorStore(VectorStore):
 
     def _setup_faiss_index(self, dimension: int) -> None:
         self.dimension = dimension
-        self.index = faiss.IndexHNSWFlat(dimension, 32)  # M=32: neighbors per node
+        self.index = faiss.IndexHNSWFlat(
+            dimension, 32, faiss.METRIC_INNER_PRODUCT
+        )  # M=32: neighbors per node
         self.index.hnsw.efConstruction = 40  # graph construction quality
         self.index.hnsw.efSearch = 64  # higher = better recall, slower
         self.chunks = []
 
     def add(self, chunks: list[str], embeddings: list[list[float]]) -> None:
         vectors = np.array(embeddings, dtype="float32")
+        faiss.normalize_L2(vectors)
         dimension = vectors.shape[1]
 
         if self.index is None:
@@ -33,6 +36,8 @@ class FaissVectorStore(VectorStore):
             )
 
         query_vector = np.array([query_embedding], dtype="float32")
+
+        faiss.normalize_L2(query_vector)
 
         _, indices = self.index.search(query_vector, top_k)
 
