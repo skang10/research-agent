@@ -8,6 +8,7 @@ from app.retrieval.chunker import VanillaChunker
 from app.retrieval.embedder import OpenRouterEmbedder
 from app.retrieval.ingest import Ingestor
 from app.retrieval.parser import VanillaParser
+from app.retrieval.retriever import Retriever
 
 
 @pytest.mark.asyncio
@@ -20,6 +21,7 @@ async def test_openrouter_ingest():
     chunker = VanillaChunker(chunk_size=20)
     embedder = OpenRouterEmbedder()
     vector_store = FaissVectorStore()
+    retriever = Retriever(vector_store, embedder)
 
     ingestor = Ingestor(parser, chunker, embedder, vector_store)
 
@@ -33,8 +35,7 @@ async def test_openrouter_ingest():
         await ingestor.ingest(upload_file)
 
     search_query = "Who attended the meeting?"
-    query_embedding = await embedder.embed([search_query])
-    search_results = vector_store.search(query_embedding[0], top_k=3)
+    search_results = await retriever.retrieve(search_query, top_k=3)
     print(f"Search results for query '{search_query}': {search_results}")
 
     assert len(search_results) > 0
