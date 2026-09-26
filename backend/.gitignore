@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment variables
+.env
+.env.local
+
+# Uploaded files
+backend/uploads/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
