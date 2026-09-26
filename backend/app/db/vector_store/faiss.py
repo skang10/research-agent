@@ -34,7 +34,7 @@ class FaissVectorStore(VectorStore):
         print(f"Added {len(chunks)} chunks to FAISS index. Total chunks: {len(self.chunks)}")
 
     def search(self, query_embedding: list[float], top_k: int) -> list[str]:
-        print(f"Searching for top {top_k} results with query embedding: {query_embedding}")
+        print(f"Searching for top {top_k} results")
         if self.index is None:
             raise ValueError(
                 "The index is empty. Use the 'add' method to add vectors before searching."
