@@ -3,3 +3,4 @@ storage:
 
 retrieval:
   chunk_size: 1024
+  embedding_model: "openai/text-embedding-3-small"
