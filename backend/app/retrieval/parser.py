@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 
 
+class UnsupportedFileTypeError(Exception):
+    pass
+
+
 class Parser(ABC):
     @abstractmethod
     def parse(self, content: bytes) -> str:
@@ -12,7 +16,7 @@ class VanillaParser(Parser):
         if content_type == "text/plain":
             return content.decode("utf-8")
         else:
-            raise ValueError(f"Unsupported content type: {content_type}")
+            raise UnsupportedFileTypeError(f"Unsupported file type: {content_type}")
 
 
 class LlamaIndexParser(Parser):
