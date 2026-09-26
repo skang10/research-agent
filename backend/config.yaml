@@ -1,2 +1,5 @@
 storage:
   sources_dir: "uploads"
+
+retrieval:
+  chunk_size: 1024

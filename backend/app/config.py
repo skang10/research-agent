@@ -14,8 +14,13 @@ class StorageConfig(BaseModel):
     sources_dir: str
 
 
+class RetrievalConfig(BaseModel):
+    chunk_size: int
+
+
 class AppConfig(BaseModel):
     storage: StorageConfig
+    retrieval: RetrievalConfig
 
 
 def load_config(file_path: str) -> AppConfig:
