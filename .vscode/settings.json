@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+  "python.interpreter.infoVisibility": "always",
+  "python.terminal.activateEnvironment": true
+}
