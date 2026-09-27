@@ -72,9 +72,9 @@ uv run pytest integration/* # integration tests
 
 ### Frameworks
 
-Backend service: FastAPI
-Agent framework: Pydantic AI
-Model provider: OpenRouter
+- Backend service: FastAPI
+- Agent framework: Pydantic AI
+- Model provider: OpenRouter
 
 ### Implementation
 
@@ -201,7 +201,7 @@ I’m ready to proceed by using multi_tool_use.parallel to run two tools simulta
 If you’d like, I can pull out the key highlights from the 3.14.7 changelog or help you upgrade your environment.
 ```
 
-### Example query 2:
+### Example query 3:
 
 ```bash
 curl -N -X POST   http://127.0.0.1:8787/api/research   -H "Content-Type: application/json"   -d '{"request":"Read https://www.python.org/about/ and summarize what Python is and what it is commonly used for."}'
@@ -261,7 +261,7 @@ be used to assess the agent's performance.
 
 ## Note: AI-Assitance
 
-I did not use Claude Code/Codex for this project. I implemented all steps on my own.
+I did not use Claude Code/Codex for this project. The steps are implemented on my own.
 The task file `AI Engineer Technical Test.pdf` was not provided to any AI tool.
 
 I used ChatGPT chat for:
