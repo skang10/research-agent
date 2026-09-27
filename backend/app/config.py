@@ -44,3 +44,4 @@ backend_port = int(os.getenv("BACKEND_PORT", 8787))
 frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 openrouter_api_key = os.getenv("OPENROUTER_API_KEY", "")
+tavily_api_key = os.getenv("TAVILY_API_KEY", "")

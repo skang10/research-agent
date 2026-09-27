@@ -1,12 +1,15 @@
 from pydantic_ai import Agent, RunContext
+from pydantic_ai.common_tools.tavily import tavily_search_tool
+from pydantic_ai.common_tools.web_fetch import web_fetch_tool
 
 from app.agents.dependencies import AgentDependencies
-from app.config import config
+from app.config import config, tavily_api_key
 
 SYSTEM_PROMPT = "You are a research agent. "
 
 research_agent = Agent(
     model=f"openrouter:{config.research_agent.model}",
+    tools=[tavily_search_tool(tavily_api_key), web_fetch_tool()],
     deps_type=AgentDependencies,
     instructions=SYSTEM_PROMPT,
 )
