@@ -25,6 +25,7 @@ Frontend runs at `http://localhost:5173/`
 1. Create an `.env` file
 
 ```bash
+cd backend
 cp .env.example .env
 ```
 
@@ -37,8 +38,9 @@ TAVILY_API_KEY=your_key
 
 3. Run the backend in Docker
 
+Make sure you are at the `backend` folder:
+
 ```bash
-cd backend
 docker build -t research-agent-backend .
 docker run \
   --env-file .env \
