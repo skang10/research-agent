@@ -1,3 +1,4 @@
+from app.config import config
 from app.db.vector_store.faiss import FaissVectorStore
 from app.retrieval.embedder import Embedder
 
@@ -8,7 +9,11 @@ class Retriever:
         self.vector_store = vector_store
         self.embedder = embedder
 
-    async def retrieve(self, query: str, top_k: int) -> list[str]:
+    async def retrieve(self, query: str, top_k: int | None = None) -> list[str]:
+
+        if not top_k:
+            top_k = config.retrieval.top_k
+
         # 1. Embed the query
         embeddings = await self.embedder.embed([query])
         query_embedding = embeddings[0]

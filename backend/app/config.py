@@ -17,6 +17,7 @@ class StorageConfig(BaseModel):
 class RetrievalConfig(BaseModel):
     chunk_size: int
     embedding_model: str
+    top_k: int
 
 
 class ResearchAgentConfig(BaseModel):
