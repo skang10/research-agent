@@ -65,7 +65,7 @@ uv run python -m app.main
 
 ```bash
 uv run pytest # all tests
-uv run pytest integration/*
+uv run pytest integration/* # integration tests
 ```
 
 ## 2. Architecture and Design
