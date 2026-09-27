@@ -49,6 +49,7 @@ docker run \
 ```
 
 Backend runs at `http://localhost:8787/`
+
 Check API docs at `http://localhost:8787/docs`
 
 ## Development
