@@ -19,9 +19,14 @@ class RetrievalConfig(BaseModel):
     embedding_model: str
 
 
+class ResearchAgentConfig(BaseModel):
+    model: str
+
+
 class AppConfig(BaseModel):
     storage: StorageConfig
     retrieval: RetrievalConfig
+    research_agent: ResearchAgentConfig
 
 
 def load_config(file_path: str) -> AppConfig:
