@@ -1,6 +1,6 @@
 import pytest
 
-from app.retrieval.parser import VanillaParser
+from app.retrieval.parser import UnsupportedFileTypeError, VanillaParser
 
 
 def test_parse_text_plain():
@@ -15,6 +15,6 @@ def test_parse_unsupported_content_type():
     parser = VanillaParser()
     content = b"Hello, world!"
     content_type = "application/json"
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(UnsupportedFileTypeError) as exc_info:
         parser.parse(content, content_type)
-    assert str(exc_info.value) == "Unsupported content type: application/json"
+    assert str(exc_info.value) == "Unsupported file type: application/json"

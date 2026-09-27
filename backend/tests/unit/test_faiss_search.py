@@ -6,7 +6,8 @@ def test_faiss_vector_store():
 
     chunks = ["chunk1", "chunk2", "chunk3"]
     embeddings = [[0.1, 0.2], [0.3, 0.4], [0.5, 0.6]]
-    store.add(chunks, embeddings)
+    sources = ["test_file.txt"] * 3
+    store.add(chunks, embeddings, sources)
 
     query_embedding = [0.1, 0.2]
     top_k = 2
