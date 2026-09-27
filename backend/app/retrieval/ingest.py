@@ -30,5 +30,7 @@ class Ingestor:
         # 4. Embed the chunks
         embeddings = await self.embedder.embed(chunks)
 
+        assert len(chunks) == len(embeddings)
+
         # 5. Store the chunks and embeddings in the vector store
-        self.vector_store.add(chunks, embeddings)
+        self.vector_store.add(chunks, embeddings, [file.filename] * len(chunks))

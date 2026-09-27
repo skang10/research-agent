@@ -22,3 +22,8 @@ class Retriever:
         results = self.vector_store.search(query_embedding, top_k)
 
         return results
+
+    def list_sources(self):
+        sources = self.vector_store.list_sources()
+        print(f"Uploaded sources: {sources}")
+        return self.vector_store.list_sources()

@@ -15,6 +15,22 @@ research_agent = Agent(
 )
 
 
+@research_agent.instructions
+async def source_context(
+    ctx: RunContext[AgentDependencies],
+) -> str:
+    sources = ctx.deps.retriever.list_sources()
+
+    if not sources:
+        return "No local source documents are currently available."
+
+    return (
+        "The user has uploaded the following source documents: "
+        + ", ".join(sources)
+        + ". Search these documents with local_search when relevant."
+    )
+
+
 @research_agent.tool
 async def local_search(ctx: RunContext[AgentDependencies], query: str) -> list[str]:
     """Search the uploaded documents for relevant information according to the query."""

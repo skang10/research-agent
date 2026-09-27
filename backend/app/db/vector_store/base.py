@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class VectorStore(ABC):
     @abstractmethod
-    def add(self, chunks: list[str], embeddings: list[list[float]]) -> None:
+    def add(self, chunks: list[str], embeddings: list[list[float]], sources: list[str]) -> None:
         pass
 
     @abstractmethod

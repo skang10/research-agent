@@ -8,8 +8,10 @@ class FaissVectorStore(VectorStore):
     def __init__(self):
         self.index = None
         self.chunks = []
+        self.sources = []
 
     def _setup_faiss_index(self, dimension: int) -> None:
+        # https://github.com/facebookresearch/faiss/blob/main/tutorial/python/6-HNSW.py
         print(f"Setting up FAISS index with dimension: {dimension}")
         self.dimension = dimension
         self.index = faiss.IndexHNSWFlat(
@@ -20,7 +22,7 @@ class FaissVectorStore(VectorStore):
         print(f"FAISS index setup complete. Index type: {type(self.index)}")
         self.chunks = []
 
-    def add(self, chunks: list[str], embeddings: list[list[float]]) -> None:
+    def add(self, chunks: list[str], embeddings: list[list[float]], sources: list[str]) -> None:
         vectors = np.array(embeddings, dtype="float32")
         print(f"Adding {len(chunks)} chunks to FAISS index with dimension: {vectors.shape[1]}")
         faiss.normalize_L2(vectors)
@@ -31,6 +33,8 @@ class FaissVectorStore(VectorStore):
 
         self.index.add(vectors)
         self.chunks.extend(chunks)
+        self.sources.extend(sources)
+        print(f"Sources: {self.list_sources()}")
         print(f"Added {len(chunks)} chunks to FAISS index. Total chunks: {len(self.chunks)}")
 
     def search(self, query_embedding: list[float], top_k: int) -> list[str]:
@@ -51,3 +55,6 @@ class FaissVectorStore(VectorStore):
             if idx != -1:  # check for valid index
                 results.append(self.chunks[idx])
         return results
+
+    def list_sources(self) -> list[str]:
+        return list(set(self.sources))
