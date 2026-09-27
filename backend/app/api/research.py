@@ -6,6 +6,8 @@ from pydantic_ai import (
     FunctionToolCallEvent,
     FunctionToolResultEvent,
     PartDeltaEvent,
+    PartStartEvent,
+    ThinkingPart,
     ThinkingPartDelta,
 )
 
@@ -40,8 +42,17 @@ async def research(
                         final_result_started = False
 
                         async for event in stream:
-                            # Thinking delta
-                            if isinstance(event, PartDeltaEvent):
+                            # Thinking starts
+                            if isinstance(event, PartStartEvent):
+                                if isinstance(event.part, ThinkingPart):
+                                    if not thinking_started:
+                                        yield "\n[Thinking] "
+                                        thinking_started = True
+
+                                    yield event.part.content
+
+                            # Thinking continues
+                            elif isinstance(event, PartDeltaEvent):
                                 if isinstance(
                                     event.delta,
                                     ThinkingPartDelta,
