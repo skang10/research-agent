@@ -66,6 +66,7 @@ uv run python -m app.main
 3. Run unit & integration tests
 
 ```bash
+cd backend
 uv run pytest # all tests
 uv run pytest integration/* # integration tests
 ```
