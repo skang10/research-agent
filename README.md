@@ -51,7 +51,7 @@ docker run \
 - Backend runs at `http://localhost:8787/`
 - Check API docs at `http://localhost:8787/docs`
 
-## Development
+### Backend Development
 
 1. Start backend with `uv`, the server reloads automatically when files change
 
